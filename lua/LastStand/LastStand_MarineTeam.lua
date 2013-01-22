@@ -175,6 +175,48 @@ local function SpawnPrototypeLab(self, techPoint)
 	
 end
 
+local function SpawnArmsLab(self, techPoint)
+
+	local techPointOrigin = techPoint:GetOrigin() + Vector(0, 2, 0)
+	
+	local spawnPoint = nil
+	
+	// First check the predefined spawn points. Look for a close one.
+	for p = 1, #Server.armslabSpawnPoints do
+	
+		local predefinedSpawnPoint = Server.armslabSpawnPoints[p]
+		if (predefinedSpawnPoint - techPointOrigin):GetLength() <= kInfantryPortalAttachRange then
+			spawnPoint = predefinedSpawnPoint
+		end
+		
+	end
+	
+	// Fallback on the random method if there is no nearby spawn point.
+	if not spawnPoint then
+	
+		for i = 1, 50 do
+		
+			local origin = CalculateRandomSpawn(nil, techPointOrigin, kTechId.ArmsLab, true, kInfantryPortalMinSpawnDistance * 1, kInfantryPortalMinSpawnDistance * 3.5, 3)
+			
+			if origin then
+				spawnPoint = origin - Vector(0, 0.1, 0)
+			end
+			
+		end
+		
+	end
+	
+	if spawnPoint then
+	
+		local ip = CreateEntity(ArmsLab.kMapName, spawnPoint, self:GetTeamNumber())
+		
+		SetRandomOrientation(ip)
+		ip:SetConstructionComplete()
+		
+	end
+	
+end
+
 // Use a replace hook for the Spawn logic.
 function MarineTeam:SpawnInitialStructures(techPoint)
 
@@ -184,10 +226,11 @@ function MarineTeam:SpawnInitialStructures(techPoint)
 	SpawnInfantryPortal(self, techPoint)
 	SpawnInfantryPortal(self, techPoint)
 	
-	// Spawn an armory
+	// Spawn an armory and other buildings that marines need.
 	SpawnArmory(self, techPoint)
 	SpawnObservatory(self, techPoint)
 	SpawnPrototypeLab(self, techPoint)
+	SpawnArmsLab(self, techPoint)
 	
 	return tower, commandStation
 	
