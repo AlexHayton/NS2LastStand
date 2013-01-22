@@ -1,3 +1,8 @@
 <options>
+    <description>It&apos;s the last stand! The marines begin the game with all buildings built and surrounded by an encroaching force of aliens. How long can they fend off the assault?</description>
+    <id>122146184</id>
     <kind>Gameplay</kind>
+    <build></build>
+    <visibility>Public</visibility>
+    <title>Last Stand Mod</title>
 </options>
