@@ -95,3 +95,15 @@ function AlienTeam:ResetTeam()
 	end
 	
 end
+
+// Post-hook the tech tree to upgrade everything at the start.
+local overrideTechTree = AlienTeam.InitTechTree
+function AlienTeam:InitTechTree()
+
+	// Call the original function.
+	overrideTechTree(self)
+	
+	// Upgrade all the items in the tech tree.
+	self.techTree:ResearchAll()
+
+end

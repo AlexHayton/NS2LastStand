@@ -7,6 +7,9 @@
 
 // LastStand_Balance.lua
 
+// Version number
+kLastStandVersion = "1.0"
+
 // Override any values here.
 kPlayingTeamInitialTeamRes = 200
 kPlayerInitialIndivRes = 50

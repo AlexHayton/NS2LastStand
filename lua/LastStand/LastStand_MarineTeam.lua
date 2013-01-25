@@ -235,3 +235,15 @@ function MarineTeam:SpawnInitialStructures(techPoint)
 	return tower, commandStation
 	
 end
+
+// Post-hook the tech tree to upgrade everything at the start.
+local overrideTechTree = MarineTeam.InitTechTree
+function MarineTeam:InitTechTree()
+
+	// Call the original function.
+	overrideTechTree(self)
+	
+	// Upgrade all the items in the tech tree.
+	self.techTree:ResearchAll()
+
+end

@@ -9,4 +9,6 @@
 Script.Load("lua/ModUtility.lua")
 
 // Hooks for stuff that goes in Shared.lua go here...
+Script.Load("lua/LastStand/LastStand_Player.lua")
+Script.Load("lua/LastStand/LastStand_TechTree.lua")
 Script.Load("lua/LastStand/LastStand_Balance.lua")

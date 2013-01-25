@@ -81,3 +81,17 @@ function NS2Gamerules:ResetGame()
 	GetGamerules():SetAllTech(true)
 	
 end
+
+local overrideOnClientConnect = NS2Gamerules.OnClientConnect
+
+// Send a message to players when they connect.
+function NS2Gamerules:OnClientConnect(client)
+
+	overrideOnClientConnect(self, client)
+	local player = client:GetControllingPlayer()
+	
+	player:BuildAndSendDirectMessage("Welcome to Last Stand v" .. kLastStandVersion .. "!")
+	player:BuildAndSendDirectMessage("In this mod, the Marines start with a full base and surrounded by Aliens.")
+	player:BuildAndSendDirectMessage("How long can you hold out?")
+	
+end
