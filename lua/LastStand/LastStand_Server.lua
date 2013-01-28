@@ -13,18 +13,22 @@ if Server then
 	local overrideGetCreateEntityOnStart = GetCreateEntityOnStart
 
 	Server.armorySpawnPoints = table.array(10)
-	Server.armslabSpawnPoints = table.array(10)
 	Server.observatorySpawnPoints = table.array(10)
 	Server.protolabSpawnPoints = table.array(10)
+	Server.armslabSpawnPoints = table.array(10)
+	Server.roboFactorySpawnPoints = table.array(10)
+	Server.sentryBatterySpawnPoints = table.array(10)
 
 	// Post hook for GetCreateEntityOnStart
 	function GetCreateEntityOnStart(mapName, groupName, values)
 
 		return overrideGetCreateEntityOnStart(mapName, groupName, values)
+		   and mapName ~= Armory.kMapName
 		   and mapName ~= Observatory.kMapName
 		   and mapName ~= PrototypeLab.kMapName
-		   and mapName ~= Armory.kMapName
 		   and mapName ~= ArmsLab.kMapName
+		   and mapName ~= RoboticsFactory.kMapName
+		   and mapName ~= SentryBattery.kMapName
 		
 	end
 
@@ -54,6 +58,16 @@ if Server then
 			elseif mapName == ArmsLab.kMapName then
 			
 				table.insert(Server.armslabSpawnPoints, values.origin)
+				success = true
+				
+			elseif mapName == RoboticsFactory.kMapName then
+			
+				table.insert(Server.roboFactorySpawnPoints, values.origin)
+				success = true
+			
+			elseif mapName == SentryBattery.kMapName then
+			
+				table.insert(Server.sentryBatterySpawnPoints, values.origin)
 				success = true
 				
 			end

@@ -69,29 +69,37 @@ function AlienTeam:ResetTeam()
 	local alienTechPoints = {}
 	table.insert(alienTechPoints, initialTechPoint)
 	
-	if #techPoints > 2 then
+	if #techPoints > 3 then
 		local techPoint2 = GetGamerules():ChooseTechPoint(techPoints, kAnyTeamIndex)
 		self:SpawnInitialStructures(techPoint2)
 		table.insert(alienTechPoints, techPoint2)
 	end
 	
-	if #techPoints > 3 then
+	if #techPoints > 4 then
 		local techPoint3 = GetGamerules():ChooseTechPoint(techPoints, kAnyTeamIndex)
 		self:SpawnInitialStructures(techPoint3)
 		table.insert(alienTechPoints, techPoint3)
 	end
 	
+	if #techPoints > 5 then
+		local techPoint4 = GetGamerules():ChooseTechPoint(techPoints, kAnyTeamIndex)
+		self:SpawnInitialStructures(techPoint4)
+		table.insert(alienTechPoints, techPoint4)
+	end
+	
 	// Assign the tech points and mature the hives.
 	for index, techPoint in ipairs(alienTechPoints) do
 		local techInfo = HiveTypes[index]
-		local hive = techPoint:GetAttached()
-		
-		if hive then
-			hive:SetMature()
-			success = hive:UpgradeToTechId(techInfo.kHiveType)
+		if techInfo then
+			local hive = techPoint:GetAttached()
+			
+			if hive then
+				hive:SetMature()
+				//success = hive:UpgradeToTechId(techInfo.kHiveType)
+			end
+			
+			//SpawnAlienBuilding(self, techPoint, techInfo.kBuildingTechId, techInfo.kBuildingMapName)
 		end
-		
-		SpawnAlienBuilding(self, techPoint, techInfo.kBuildingTechId, techInfo.kBuildingMapName)
 	end
 	
 end
@@ -104,6 +112,7 @@ function AlienTeam:InitTechTree()
 	overrideTechTree(self)
 	
 	// Upgrade all the items in the tech tree.
-	self.techTree:ResearchAll()
+	local dontResearchTech = { }
+	self.techTree:ResearchAll(dontResearchTech)
 
 end

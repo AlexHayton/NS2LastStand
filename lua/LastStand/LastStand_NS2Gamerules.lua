@@ -74,11 +74,18 @@ end
 
 local overrideResetGame = NS2Gamerules.ResetGame
 
-// Use the AllTech cheat to give all tech to both teams.
+// Post-hooks ResetGame
 function NS2Gamerules:ResetGame()
 
 	overrideResetGame(self)
-	GetGamerules():SetAllTech(true)
+	
+	// Assign any free resource points at the end of the reset process to the Marine team.
+	local resourcePoints = Shared.GetEntitiesWithClassname("ResourcePoint")
+	for index, resourcePoint in ientitylist(resourcePoints) do
+		if resourcePoint:GetAttached() == nil then
+			resourcePoint:SpawnResourceTowerForTeam(self.team1, kTechId.Extractor)
+		end
+	end
 	
 end
 

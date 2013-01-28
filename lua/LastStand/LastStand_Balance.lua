@@ -10,9 +10,17 @@
 // Version number
 kLastStandVersion = "1.0"
 
-// Override any values here.
-kPlayingTeamInitialTeamRes = 200
+// Resources
+kPlayingTeamInitialTeamRes = 50
 kPlayerInitialIndivRes = 50
-
 kTeamResourcePerTick = 1
 kPlayerResPerInterval = 0.125
+
+// Spawn distances
+kInfantryPortalMaxSpawnDistance = kInfantryPortalMinSpawnDistance * 2.5
+kArmoryMaxSpawnDistance = kInfantryPortalMinSpawnDistance * 4
+kObservatoryMaxSpawnDistance = kInfantryPortalMinSpawnDistance * 4
+kProtoLabMaxSpawnDistance = kInfantryPortalMinSpawnDistance * 4
+kArmsLabMaxSpawnDistance = kInfantryPortalMinSpawnDistance * 3
+kRoboticsFactoryMaxSpawnDistance = kInfantryPortalMinSpawnDistance * 4
+kSentryBatteryMaxSpawnDistance = kInfantryPortalMinSpawnDistance * 3

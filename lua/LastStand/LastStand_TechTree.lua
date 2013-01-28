@@ -12,12 +12,14 @@ local networkVars =
 }
 
 // Unlock all abilities.
-function TechTree:ResearchAll()
+function TechTree:ResearchAll(dontResearchTech)
 
 	for index, node in pairs(self.nodeList) do
-		node:SetResearched(true)
-		node.available = true
-		self:SetTechNodeChanged(node)
+		if not dontResearchTech[node:GetTechId()] then		
+			node:SetResearched(true)
+			node.available = true
+			self:SetTechNodeChanged(node)
+		end
 	end
 	
 	self:ComputeAvailability()
