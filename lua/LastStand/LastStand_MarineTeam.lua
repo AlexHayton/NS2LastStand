@@ -59,11 +59,11 @@ function MarineTeam:SpawnInitialStructures(techPoint)
 	SpawnMarineStructure(self, techPoint, kTechId.InfantryPortal, InfantryPortal.kMapName, Server.infantryPortalSpawnPoints, kInfantryPortalMaxSpawnDistance)
 	
 	// Spawn an armory and other buildings that marines need.
-	SpawnMarineStructure(self, techPoint, kTechId.Armory, Armory.kMapName, Server.armorySpawnPoints, kArmoryMaxSpawnDistance)
+	SpawnMarineStructure(self, techPoint, kTechId.AdvancedArmory, AdvancedArmory.kMapName, Server.armorySpawnPoints, kArmoryMaxSpawnDistance)
 	SpawnMarineStructure(self, techPoint, kTechId.Observatory, Observatory.kMapName, Server.observatorySpawnPoints, kObservatoryMaxSpawnDistance)
 	SpawnMarineStructure(self, techPoint, kTechId.PrototypeLab, PrototypeLab.kMapName, Server.protolabSpawnPoints, kProtoLabMaxSpawnDistance)
 	SpawnMarineStructure(self, techPoint, kTechId.ArmsLab, ArmsLab.kMapName, Server.armslabSpawnPoints, kArmsLabMaxSpawnDistance)
-	SpawnMarineStructure(self, techPoint, kTechId.RoboticsFactory, RoboticsFactory.kMapName, Server.roboFactorySpawnPoints, kRoboticsFactoryMaxSpawnDistance)
+	SpawnMarineStructure(self, techPoint, kTechId.ARCRoboticsFactory, ARCRoboticsFactory.kMapName, Server.roboFactorySpawnPoints, kRoboticsFactoryMaxSpawnDistance)
 	SpawnMarineStructure(self, techPoint, kTechId.SentryBattery, SentryBattery.kMapName, Server.sentryBatterySpawnPoints, kSentryBatteryMaxSpawnDistance)
 	
 	return tower, commandStation

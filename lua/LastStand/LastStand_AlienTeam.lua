@@ -60,28 +60,28 @@ function AlienTeam:ResetTeam()
 
 	PlayingTeam.ResetTeam(self)
 
-    // Build list of tech points and make sure there are 3 if we can.
+    // Build list of available tech points and make sure the aliens begin with 4 hives if we can.
 	local techPoints = EntityListToTable(Shared.GetEntitiesWithClassname("TechPoint"))
-	if table.maxn(techPoints) < 2 then
+	if table.maxn(techPoints) < 4 then
 		Print("Warning -- Found only %d %s entities.", table.maxn(techPoints), TechPoint.kMapName)
 	end
 	local initialTechPoint = self:GetInitialTechPoint()
 	local alienTechPoints = {}
 	table.insert(alienTechPoints, initialTechPoint)
 	
-	if #techPoints > 3 then
+	if #techPoints > 0 then
 		local techPoint2 = GetGamerules():ChooseTechPoint(techPoints, kAnyTeamIndex)
 		self:SpawnInitialStructures(techPoint2)
 		table.insert(alienTechPoints, techPoint2)
 	end
 	
-	if #techPoints > 4 then
+	if #techPoints > 1 then
 		local techPoint3 = GetGamerules():ChooseTechPoint(techPoints, kAnyTeamIndex)
 		self:SpawnInitialStructures(techPoint3)
 		table.insert(alienTechPoints, techPoint3)
 	end
 	
-	if #techPoints > 5 then
+	if #techPoints > 2 then
 		local techPoint4 = GetGamerules():ChooseTechPoint(techPoints, kAnyTeamIndex)
 		self:SpawnInitialStructures(techPoint4)
 		table.insert(alienTechPoints, techPoint4)

@@ -83,7 +83,16 @@ function NS2Gamerules:ResetGame()
 	local resourcePoints = Shared.GetEntitiesWithClassname("ResourcePoint")
 	for index, resourcePoint in ientitylist(resourcePoints) do
 		if resourcePoint:GetAttached() == nil then
-			resourcePoint:SpawnResourceTowerForTeam(self.team1, kTechId.Extractor)
+			local extractor = resourcePoint:SpawnResourceTowerForTeam(self.team1, kTechId.Extractor)
+			
+			// Also build any power nodes nearby to an active resource tower so they begin powered.
+			for index, powerPoint in ientitylist(Shared.GetEntitiesWithClassname("PowerPoint")) do
+
+				if powerPoint:GetLocationName() == extractor:GetLocationName() then
+					powerPoint:SetConstructionComplete()
+				end
+
+			end
 		end
 	end
 	
