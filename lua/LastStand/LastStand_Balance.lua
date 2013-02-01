@@ -8,7 +8,7 @@
 // LastStand_Balance.lua
 
 // Version number
-kLastStandVersion = "1.0"
+kLastStandVersion = "1.1"
 
 // Resources
 kPlayingTeamInitialTeamRes = 50
