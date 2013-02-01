@@ -10,6 +10,9 @@
 local function SpawnMarineStructure(self, techPoint, techId, mapName, spawnPointsTable, maxRange)
 
 	local techPointOrigin = techPoint:GetOrigin() + Vector(0, 2, 0)
+	local newStructureExtents = LookupTechData(kTechId.Marine, kTechDataMaxExtents)
+	local newStructureHeight = newStructureExtents.y
+	local newStructureWidth = math.max(newStructureExtents.x, newStructureExtents.z)
 	
 	local spawnPoint = nil
 	
@@ -28,9 +31,10 @@ local function SpawnMarineStructure(self, techPoint, techId, mapName, spawnPoint
 	
 		for i = 1, 50 do
 		
-			local origin = CalculateRandomSpawn(nil, techPointOrigin, techId, true, kInfantryPortalMinSpawnDistance * 1, maxRange, 3)
+			local origin = GetRandomSpawnForCapsule(newStructureHeight, newStructureWidth, techPointOrigin + Vector(0, 0.4, 0), kInfantryPortalMinSpawnDistance, maxRange, EntityFilterAll())
 			
 			if origin then
+				origin = GetGroundAtPosition(origin, nil, PhysicsMask.AllButPCs, newStructureExtents)
 				spawnPoint = origin - Vector(0, 0.1, 0)
 			end
 			
