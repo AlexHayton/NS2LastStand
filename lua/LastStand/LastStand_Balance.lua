@@ -8,10 +8,10 @@
 // LastStand_Balance.lua
 
 // Version number
-kLastStandVersion = "1.1"
+kLastStandVersion = "1.2"
 
 // Resources
-kPlayingTeamInitialTeamRes = 50
+kPlayingTeamInitialTeamRes = 40
 kPlayerInitialIndivRes = 50
 kTeamResourcePerTick = 1
 kPlayerResPerInterval = 0.125
