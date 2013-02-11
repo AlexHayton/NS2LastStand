@@ -11,8 +11,8 @@
 kLastStandVersion = "1.2"
 
 // Resources
-kPlayingTeamInitialTeamRes = 40
-kPlayerInitialIndivRes = 50
+kPlayingTeamInitialTeamRes = 50
+kPlayerInitialIndivRes = 20
 kTeamResourcePerTick = 1
 kPlayerResPerInterval = 0.125
 
